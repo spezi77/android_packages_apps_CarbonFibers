@@ -43,12 +43,14 @@ public class InterfaceButtons extends SettingsPreferenceFragment implements
     private static final String KEY_ASSIST_LONG_PRESS = "hardware_keys_assist_long_press";
     private static final String KEY_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
+    private static final String KEY_BACK_LONG_PRESS_KILL = "hardware_keys_back_long_press_kill";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
 
     private static final String CATEGORY_HOME = "home_key";
     private static final String CATEGORY_MENU = "menu_key";
     private static final String CATEGORY_ASSIST = "assist_key";
     private static final String CATEGORY_APPSWITCH = "app_switch_key";
+    private static final String CATEGORY_BACK = "back_key";
     private static final String CATEGORY_BACKLIGHT = "key_backlight";
 
     // Available custom actions to perform on a key press.
@@ -78,6 +80,7 @@ public class InterfaceButtons extends SettingsPreferenceFragment implements
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
+    private CheckBoxPreference mBackLongPressKill;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +98,7 @@ public class InterfaceButtons extends SettingsPreferenceFragment implements
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean hasBackKey = (deviceKeys & KEY_MASK_BACK) != 0;
 
         boolean hasAnyBindableKey = false;
         final PreferenceCategory homeCategory =
@@ -105,6 +109,8 @@ public class InterfaceButtons extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_ASSIST);
         final PreferenceCategory appSwitchCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_APPSWITCH);
+        final PreferenceCategory backCategory =
+                (PreferenceCategory) prefScreen.findPreference(CATEGORY_BACK);
         final PreferenceCategory backlightCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_BACKLIGHT);
 
@@ -179,6 +185,15 @@ public class InterfaceButtons extends SettingsPreferenceFragment implements
             hasAnyBindableKey = true;
         } else {
             prefScreen.removePreference(appSwitchCategory);
+        }
+
+        if (hasBackKey) {
+            mBackLongPressKill =
+                    (CheckBoxPreference) prefScreen.findPreference(KEY_BACK_LONG_PRESS_KILL);
+
+            hasAnyBindableKey = true;
+        } else {
+            prefScreen.removePreference(backCategory);
         }
 
         mEnableCustomBindings =
@@ -261,6 +276,9 @@ public class InterfaceButtons extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mEnableCustomBindings) {
             handleCheckboxClick(mEnableCustomBindings, Settings.System.HARDWARE_KEY_REBINDING);
+            return true;
+        } else if (preference == mBackLongPressKill) {
+            handleCheckboxClick(mBackLongPressKill, Settings.System.KILL_APP_LONGPRESS_BACK);
             return true;
         }
 

@@ -17,11 +17,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <CheckBoxPreference
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="hardware_keys_enable_custom"
         android:title="@string/hardware_keys_enable_custom_title"
-        android:defaultValue="false"
-        android:persistent="false" />
+        android:defaultValue="false" />
 
     <com.carbon.settings.fragments.inter.ButtonBacklightBrightness
         android:key="button_backlight"
@@ -121,6 +120,19 @@
             android:entries="@array/hardware_keys_action_entries"
             android:entryValues="@array/hardware_keys_action_values"
             android:persistent="false"
+            android:dependency="hardware_keys_enable_custom" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="back_key"
+        android:title="@string/hardware_keys_back_key_title" >
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="hardware_keys_back_long_press_kill"
+            android:title="@string/hardware_keys_back_long_press_kill_title"
+            android:persistent="false"
+            android:defaultValue="false"
             android:dependency="hardware_keys_enable_custom" />
 
     </PreferenceCategory>
