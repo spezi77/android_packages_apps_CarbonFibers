@@ -789,5 +789,9 @@
     <!-- Status bar brightness slider -->
     <string name="brightness_slider_title">Statusbar brightness slider</string>
     <string name="brightness_slider_summary">When enabled, this option will allow you to change the brightness by sliding your finger across the Statusbar. Note: Will not be active when auto-brightness is on</string>
+ 
+
+     <string name="pref_trackball_wake_toggle_title">Trackball wake</string>
+     <string name="pref_trackball_wake_toggle_summary">Trackball press wakes device</string>
 
 </resources>
