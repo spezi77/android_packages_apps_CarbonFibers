@@ -17,20 +17,20 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.carbon.fibers" >
 
     <CheckBoxPreference
-        android:key="lockscreen_eight_targets"
-        android:title="@string/lockscreen_eight_targets_title"
-        android:summary="@string/lockscreen_eight_targets_summary" />
+            android:key="lockscreen_eight_targets"
+            android:title="@string/lockscreen_eight_targets_title"
+            android:summary="@string/lockscreen_eight_targets_summary" />
 
     <PreferenceScreen
-             android:key="lockscreen_shortcuts"
-             android:fragment="com.carbon.fibers.dslv.ButtonsListViewSettings"
-             android:summary="@string/lockscreen_shortcuts_summary"
-             android:title="@string/lockscreen_shortcuts_title">
-         <extra android:name="buttonMode" android:value="4" />
-         <extra android:name="maxAllowedButtons" android:value="5" />
-         <extra android:name="disableLongpress" android:value="true" />
-         <extra android:name="useAppPickerOnly" android:value="true" />
-         <extra android:name="fragment" android:value="com.carbon.fibers.fragments.ls.LockscreenShortcutFragment" />
+            android:key="lockscreen_shortcuts"
+            android:fragment="com.carbon.fibers.dslv.ButtonsListViewSettings"
+            android:summary="@string/lockscreen_shortcuts_summary"
+            android:title="@string/lockscreen_shortcuts_title">
+        <extra android:name="buttonMode" android:value="4" />
+        <extra android:name="maxAllowedButtons" android:value="5" />
+        <extra android:name="disableLongpress" android:value="true" />
+        <extra android:name="useAppPickerOnly" android:value="true" />
+        <extra android:name="fragment" android:value="com.carbon.fibers.fragments.ls.LockscreenShortcutFragment" />
     </PreferenceScreen>
 
     <PreferenceScreen
@@ -48,6 +48,10 @@
             android:defaultValue="0" />
 
     <CheckBoxPreference
+            android:key="battery_around_lockscreen_ring"
+            android:title="@string/battery_around_lockscreen_ring" />
+
+    <CheckBoxPreference
             android:key="see_through"
             android:title="@string/see_through_title"
             android:summary="@string/see_through_summary" />
@@ -61,8 +65,17 @@
             android:defaultValue="12" />
 
     <CheckBoxPreference
-        android:key="lockscreen_torch"
-        android:title="@string/lockscreen_glowpad_torch_title"
-        android:summary="@string/lockscreen_glowpad_torch_summary" />
+            android:key="lockscreen_torch"
+            android:title="@string/lockscreen_glowpad_torch_title"
+            android:summary="@string/lockscreen_glowpad_torch_summary" />
+
+    <PreferenceScreen
+        android:key="lock_clock"
+        android:title="@string/lock_clock_title"
+        android:summary="@string/lock_clock_summary">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.cyanogenmod.lockclock"
+                android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
+    </PreferenceScreen>
 
 </PreferenceScreen>

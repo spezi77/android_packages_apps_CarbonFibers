@@ -163,6 +163,10 @@
     <string name="ui_general_category">General</string>
     <string name="ui_recents_category">Recents Panel</string>
 
+    <!--- Lock clock -->
+    <string name="lock_clock_title">Clock widget</string>
+    <string name="lock_clock_summary">View or change CM cLock widget options</string>
+
     <!-- Lockscreen settings -->
     <string name="keyguard_title">Lockscreen</string>
     <string name="ls_targets_category">Targets</string>
@@ -191,6 +195,7 @@
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Brightness</string>
     <string name="title_tile_camera">Camera</string>
+    <string name="title_tile_carbon">Carbon</string>
     <string name="title_tile_sleep">Go to sleep</string>
     <string name="title_tile_gps">GPS</string>
     <string name="title_tile_torch">Torch</string>
@@ -492,6 +497,7 @@
     <string name="privacy">Privacy</string>
 
     <string name="lockscreen_notifications">Lockscreen notifications</string>
+    <string name="notification_color">Notification background color</string>
     <string name="lockscreen_notifications_summary">Show pending notifications on lockscreen</string>
     <string name="pocket_mode">Pocket mode</string>
     <string name="pocket_mode_summary">Turn screen on and show all notifications when device is pulled out of pocket. Turn screen off when device gets back into pocket.</string>
@@ -597,6 +603,8 @@
     <string name="expanded_desktop_disabled">Disabled</string>
     <string name="expanded_desktop_status_bar">Status bar visible</string>
     <string name="expanded_desktop_no_status_bar">Status bar hidden</string>
+
+    <string name="battery_around_lockscreen_ring">Battery level around lock ring</string>
 
     <!-- Navigation bar -->
     <string name="navigation_bar_general_category">General</string>
