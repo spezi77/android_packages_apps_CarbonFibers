@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The Android Open Source Project
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013 SlimRoms (blk_jack)
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
 
-    <style name="application_theme_dark" parent="@android:style/Theme.Holo" >
-        <item name="android:actionBarStyle">@android:style/Widget.Holo.ActionBar.Solid</item>
-        <item name="android:buttonStyle">@style/button_style</item>
-    </style>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-</resources>
+    <PreferenceScreen
+        android:fragment="com.carbon.fibers.fragments.PowerMenuStyle"
+        android:key="power_menu_style"
+        android:title="@string/quicksettings_tiles_style"
+        android:summary="@string/power_menu_style_summary" />
+
+</PreferenceScreen>

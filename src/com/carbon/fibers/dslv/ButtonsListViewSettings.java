@@ -59,6 +59,7 @@ import com.android.internal.util.slim.ButtonsHelper;
 import com.android.internal.util.slim.ImageHelper;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.slim.PolicyHelper;
 
 import com.carbon.fibers.preference.SettingsPreferenceFragment;
 import com.carbon.fibers.R;
@@ -67,6 +68,7 @@ import com.carbon.fibers.dslv.DragSortController;
 import com.carbon.fibers.fragments.navbar.ShortcutPickerHelper;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
@@ -89,7 +91,7 @@ public class ButtonsListViewSettings extends ListFragment implements
     private static final int PIE_SECOND            = 2;
     private static final int NAV_RING              = 3;
     private static final int LOCKSCREEN_SHORTCUT   = 4;
-
+    private static final int POWER_MENU_SHORTCUT   = 5;
 
     private static final int DEFAULT_MAX_BUTTON_NUMBER = 5;
 
@@ -150,7 +152,7 @@ public class ButtonsListViewSettings extends ListFragment implements
                     mButtonConfigsAdapter.add(item);
                     showDialogInner(DLG_DELETION_NOT_ALLOWED, 0, false, false);
                 } else {
-                    deleteIconFileIfPresent(item);
+                    deleteIconFileIfPresent(item, true);
                     setConfig(mButtonConfigs, false);
                     if (mButtonConfigs.size() == 0) {
                         showDisableMessage(true);
@@ -191,8 +193,8 @@ public class ButtonsListViewSettings extends ListFragment implements
 
         FilteredDeviceFeaturesArray finalActionDialogArray = new FilteredDeviceFeaturesArray();
         finalActionDialogArray = DeviceUtils.filterUnsupportedDeviceFeatures(mActivity,
-            res.getStringArray(res.getIdentifier(mActionValuesKey, "array", "com.carbon.fibers")),
-            res.getStringArray(res.getIdentifier(mActionEntriesKey, "array", "com.carbon.fibers")));
+            res.getStringArray(res.getIdentifier(mActionValuesKey, "array", "com.android.settings")),
+            res.getStringArray(res.getIdentifier(mActionEntriesKey, "array", "com.android.settings")));
         mActionDialogValues = finalActionDialogArray.values;
         mActionDialogEntries = finalActionDialogArray.entries;
 
@@ -298,9 +300,25 @@ public class ButtonsListViewSettings extends ListFragment implements
 
     @Override
     public void shortcutPicked(String action,
-                String description, boolean isApplication) {
+                String description, Bitmap bmp, boolean isApplication) {
         if (mPendingIndex == -1) {
             return;
+        }
+        if (bmp != null && !mPendingLongpress) {
+            // Icon is present, save it for future use and add the file path to the action.
+            String fileName = mActivity.getFilesDir()
+                    + File.separator + "shortcut_" + System.currentTimeMillis() + ".png";
+            try {
+                FileOutputStream out = new FileOutputStream(fileName);
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                action = action + "?hasExtraIcon=" + fileName;
+                File image = new File(fileName);
+                image.setReadable(true, false);
+            }
         }
         if (mPendingNewButton) {
             addNewButton(action, description);
@@ -357,7 +375,7 @@ public class ButtonsListViewSettings extends ListFragment implements
         mButtonConfigsAdapter.remove(button);
 
         if (!longpress) {
-            deleteIconFileIfPresent(button);
+            deleteIconFileIfPresent(button, false);
         }
 
         if (icon != null) {
@@ -367,6 +385,7 @@ public class ButtonsListViewSettings extends ListFragment implements
                 button.setLongpressAction(action);
                 button.setLongpressActionDescription(description);
             } else {
+                deleteIconFileIfPresent(button, true);
                 button.setClickAction(action);
                 button.setClickActionDescription(description);
                 button.setIcon(ButtonsConstants.ICON_EMPTY);
@@ -392,9 +411,13 @@ public class ButtonsListViewSettings extends ListFragment implements
         return false;
     }
 
-    private void deleteIconFileIfPresent(ButtonConfig button) {
+    private void deleteIconFileIfPresent(ButtonConfig button, boolean deleteShortCutIcon) {
         File oldImage = new File(button.getIcon());
         if (oldImage.exists()) {
+            oldImage.delete();
+        }
+        oldImage = new File(button.getClickAction().replaceAll(".*?hasExtraIcon=", ""));
+        if (oldImage.exists() && deleteShortCutIcon) {
             oldImage.delete();
         }
     }
@@ -482,6 +505,9 @@ public class ButtonsListViewSettings extends ListFragment implements
             case PIE_SECOND:
                 return ButtonsHelper.getPieSecondLayerConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
+            case POWER_MENU_SHORTCUT:
+                return PolicyHelper.getPowerMenuConfigWithDescription(
+                    mActivity, mActionValuesKey, mActionEntriesKey);
             case LOCKSCREEN_SHORTCUT:
                 return ButtonsHelper.getLockscreenShortcutConfig(mActivity);
         }
@@ -501,6 +527,9 @@ public class ButtonsListViewSettings extends ListFragment implements
                 break;
             case PIE_SECOND:
                 ButtonsHelper.setPieSecondLayerConfig(mActivity, buttonConfigs, reset);
+                break;
+            case POWER_MENU_SHORTCUT:
+                PolicyHelper.setPowerMenuConfig(mActivity, buttonConfigs, reset);
                 break;
             case LOCKSCREEN_SHORTCUT:
                 ButtonsHelper.setLockscreenShortcutConfig(mActivity, buttonConfigs, reset);
@@ -548,10 +577,17 @@ public class ButtonsListViewSettings extends ListFragment implements
                     getResources().getString(R.string.shortcut_action_longpress)
                     + " " + getItem(position).getLongpressActionDescription());
             }
-            holder.iconView.setImageDrawable(ImageHelper.resize(
-                    mActivity, ButtonsHelper.getButtonIconImage(mActivity,
-                    getItem(position).getClickAction(),
-                    getItem(position).getIcon()), 36));
+            if (mButtonMode == POWER_MENU_SHORTCUT) {
+                holder.iconView.setImageDrawable(ImageHelper.resize(
+                        mActivity, PolicyHelper.getPowerMenuIconImage(mActivity,
+                        getItem(position).getClickAction(),
+                        getItem(position).getIcon(), false), 36));
+            } else {
+                holder.iconView.setImageDrawable(ImageHelper.resize(
+                        mActivity, ButtonsHelper.getButtonIconImage(mActivity,
+                        getItem(position).getClickAction(),
+                        getItem(position).getIcon()), 36));
+            }
 
             if (!mDisableIconPicker && holder.iconView.getDrawable() != null) {
                 holder.iconView.setOnClickListener(new OnClickListener() {
@@ -610,7 +646,7 @@ public class ButtonsListViewSettings extends ListFragment implements
                             // first delete custom icons in case they exist
                             ArrayList<ButtonConfig> buttonConfigs = getOwner().getConfig();
                             for (int i = 0; i < buttonConfigs.size(); i++) {
-                                getOwner().deleteIconFileIfPresent(buttonConfigs.get(i));
+                                getOwner().deleteIconFileIfPresent(buttonConfigs.get(i), true);
                             }
 
                             // reset provider values and button adapter to default
@@ -645,6 +681,9 @@ public class ButtonsListViewSettings extends ListFragment implements
                     switch (getOwner().mButtonMode) {
                         // case LOCKSCREEN_SHORTCUT:
                         case LOCKSCREEN_SHORTCUT:
+                        case POWER_MENU_SHORTCUT:
+                            buttonMode = res.getString(R.string.shortcut_action_help_shortcut);
+                            break;
                         case NAV_BAR:
                         case NAV_RING:
                         case PIE:

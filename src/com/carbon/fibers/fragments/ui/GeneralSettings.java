@@ -27,6 +27,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.WindowManagerGlobal;
+import android.widget.Toast;
 
 import com.carbon.fibers.R;
 import com.carbon.fibers.Utils;
@@ -42,11 +43,13 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
+    private static final String KEY_TOAST_ANIMATION = "toast_animation";
 
     private ListPreference mCrtMode;
     private ListPreference mExpandedDesktopPref;
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+    private ListPreference mToastAnimation;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 
     @Override
@@ -114,6 +117,13 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);
 
+        mToastAnimation = (ListPreference) findPreference(KEY_TOAST_ANIMATION);
+        mToastAnimation.setSummary(mToastAnimation.getEntry());
+        int currentToast = Settings.System.getInt(getContentResolver(), Settings.System.TOAST_ANIMATION, 1);
+        mToastAnimation.setValueIndex(currentToast);
+        mToastAnimation.setSummary(mToastAnimation.getEntries()[currentToast]);
+        mToastAnimation.setOnPreferenceChangeListener(this);
+
         Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
                 getPreferenceScreen(), KEY_SCREEN_GESTURE_SETTINGS);
     }
@@ -149,6 +159,12 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LISTVIEW_INTERPOLATOR, value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+            return true;
+        } else if (preference == mToastAnimation) {
+            int index = mToastAnimation.findIndexOfValue((String) objValue);
+            Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) objValue);
+            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
+            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
             return true;
         }
 

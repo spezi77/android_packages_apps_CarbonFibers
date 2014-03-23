@@ -201,7 +201,8 @@ public class SettingsActivity extends PreferenceActivity implements ButtonBarHan
         InterfaceSettings.class.getName(),
         KeyguardSettings.class.getName(),
         MoreDeviceSettings.class.getName(),
-        PowerMenuSettings.class.getName(),
+        PowerMenuFragment.class.getName(),
+        PowerMenuStyle.class.getName(),
         SbSettings.class.getName(),
         QuickSettingsTiles.class.getName(),
         QuickSettingsTilesStyle.class.getName(),
@@ -218,7 +219,8 @@ public class SettingsActivity extends PreferenceActivity implements ButtonBarHan
         PieControl.class.getName(),
         PieStyleSettings.class.getName(),
         PieTriggerSettings.class.getName(),
-        PieTab.class.getName()
+        PieTab.class.getName(),
+        ProgressBar.class.getName()
     };
 
     @Override
