@@ -35,6 +35,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_NETWORKADB;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_NFC;
 import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
+import static com.android.internal.util.cm.QSConstants.TILE_POWERMENU;
 import static com.android.internal.util.cm.QSConstants.TILE_PERFORMANCE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
 import static com.android.internal.util.cm.QSConstants.TILE_RINGER;
@@ -49,6 +50,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_VOLUME;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFI;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_QUICKRECORD;
+import static com.android.internal.util.cm.QSConstants.TILE_BATTERYSAVER;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -122,6 +124,9 @@ public class QuickSettingsUtil {
                 TILE_PROFILE, R.string.title_tile_profile,
                 "com.android.systemui:drawable/ic_qs_profiles"));
         registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_POWERMENU, R.string.title_tile_powermenu,
+                "com.android.systemui:drawable/ic_qs_powermenu"));
+        registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_PERFORMANCE_PROFILE, R.string.title_tile_performance_profile,
                 "com.android.systemui:drawable/ic_qs_perf_profile"));
         registerTile(new QuickSettingsUtil.TileInfo(
@@ -169,6 +174,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_QUICKRECORD, R.string.title_tile_quick_record,
                 "com.android.systemui:drawable/ic_qs_quickrecord"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_BATTERYSAVER, R.string.quick_settings_battery_saver_label,
+                "com.android.systemui:drawable/ic_qs_battery_saver_on"));
     }
 
     private static void registerTile(QuickSettingsUtil.TileInfo info) {
