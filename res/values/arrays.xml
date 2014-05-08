@@ -18,8 +18,25 @@
         <item>4</item>
     </string-array>
 
+    <!-- RAM circle -->
+    <string-array name="ram_circle_entries" translatable="false">
+        <item>@string/clear_button_off</item>
+        <item>@string/clear_button_top_left</item>
+        <item>@string/clear_button_top_right</item>
+        <item>@string/clear_button_bottom_left</item>
+        <item>@string/clear_button_bottom_right</item>
+    </string-array>
+
+    <string-array name="ram_circle_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <!-- Recents RAM bar-->
-    <string-array name="entries_ram_bar_mode">
+    <string-array name="entries_ram_bar_mode" translatable="false">
         <item>@string/ram_bar_none</item>
         <item>@string/ram_bar_apps</item>
         <item>@string/ram_bar_cache</item>
@@ -31,7 +48,7 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
-    </string-array> 
+    </string-array>
 
     <!-- Hardware Keys -->
     <string-array name="hardware_keys_action_entries" translatable="false">
@@ -299,7 +316,7 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="entries_battery_icon">
+    <string-array name="entries_battery_icon" translatable="false">
         <item>@string/battery_status_icon</item>
         <item>@string/battery_status_percentage</item>
         <item>@string/battery_status_icon_percentage</item>
@@ -319,7 +336,7 @@
         <item>6</item>
     </string-array>
 
-    <string-array name="circle_battery_animation_speed_entries" >
+    <string-array name="circle_battery_animation_speed_entries" translatable="false">
         <item>@string/circle_battery_animation_speed_none</item>
         <item>@string/circle_battery_animation_speed_slow</item>
         <item>@string/circle_battery_animation_speed_stock</item>
@@ -343,7 +360,7 @@
         <item>1</item>
     </string-array>
 
-    <string-array name="clock_font_style_entries">
+    <string-array name="clock_font_style_entries" translatable="false">
         <item>@string/clock_font_bold</item>
         <item>@string/clock_font_condensed</item>
         <item>@string/clock_font_light</item>
@@ -359,7 +376,7 @@
         <item>4</item>
     </string-array>
 
-    <string-array name="entries_status_bar_am_pm">
+    <string-array name="entries_status_bar_am_pm" translatable="false">
         <item>@string/am_pm_clock_none</item>
         <item>@string/am_pm_clock_small</item>
         <item>@string/am_pm_clock_normal</item>
@@ -399,7 +416,7 @@
         <item>5</item>
     </string-array>
 
-    <string-array name="clock_date_display_entries">
+    <string-array name="clock_date_display_entries" translatable="false">
         <item>@string/clock_date_display_none</item>
         <item>@string/clock_date_display_small</item>
         <item>@string/clock_date_display_normal</item>
@@ -411,7 +428,7 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="clock_date_style_entries">
+    <string-array name="clock_date_style_entries" translatable="false">
         <item>@string/clock_date_style_normal</item>
         <item>@string/clock_date_style_lowercase</item>
         <item>@string/clock_date_style_uppercase</item>
@@ -465,7 +482,7 @@
         <item>8000</item>
     </string-array>
 
-    <string-array name="lockscreen_icon_picker_labels">
+    <string-array name="lockscreen_icon_picker_labels" translatable="false">
         <item>@string/icon_picker_alarm</item>
         <item>@string/icon_picker_browser</item>
         <item>@string/icon_picker_calendar</item>
@@ -543,7 +560,7 @@
         <item>4</item>
     </string-array>
 
-    <string-array name="notification_wallpaper_entries">
+    <string-array name="notification_wallpaper_entries" translatable="false">
         <item>@string/notification_background_color_fill</item>
         <item>@string/notification_background_custom_image</item>
         <item>@string/notification_background_default_wallpaper</item>
@@ -555,7 +572,7 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="notification_wallpaper_landscape_entries">
+    <string-array name="notification_wallpaper_landscape_entries" translatable="false">
         <item>@string/notification_background_custom_image</item>
         <item>@string/notification_background_default_wallpaper</item>
     </string-array>
@@ -608,7 +625,7 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="shortcut_action_entries">
+    <string-array name="shortcut_action_entries" translatable="false">
         <item>@string/shortcut_action_back</item>
         <item>@string/shortcut_action_app</item>
         <item>@string/shortcut_action_expanded_desktop</item>
@@ -655,7 +672,7 @@
     </string-array>
 
     <!-- NavBar -->
-    <string-array name="pref_navigation_menu_entries">
+    <string-array name="pref_navigation_menu_entries" translatable="false">
         <item>@string/navigation_menu_right</item>
         <item>@string/navigation_menu_left</item>
         <item>@string/navigation_menu_both</item>
@@ -668,7 +685,7 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="pref_menu_display_entries">
+    <string-array name="pref_menu_display_entries" translatable="false">
         <item>@string/navigation_menu_always_show</item>
         <item>@string/navigation_menu_never_show</item>
         <item>@string/navigation_menu_default_jb_behavior</item>
@@ -742,7 +759,7 @@
         <item>0</item>
     </string-array>
 
-    <string-array name="shortcut_action_navring_entries">
+    <string-array name="shortcut_action_navring_entries" translatable="false">
         <item>@string/shortcut_action_app</item>
         <item>@string/shortcut_action_expanded_desktop</item>
         <item>@string/shortcut_action_kill</item>
@@ -780,7 +797,7 @@
         <item>**null**</item>
     </string-array>
 
-    <string-array name="shortcut_action_power_menu_entries">
+    <string-array name="shortcut_action_power_menu_entries" translatable="false">
         <item>@string/shortcut_action_airplane</item>
         <item>@string/shortcut_action_app</item>
         <item>@string/shortcut_action_expanded_desktop</item>
@@ -806,7 +823,7 @@
         <item>**sound**</item>
     </string-array>
 
-    <string-array name="icon_color_mode_entries">
+    <string-array name="icon_color_mode_entries" translatable="false">
         <item>@string/icon_color_mode_all_icons</item>
         <item>@string/icon_color_mode_system_icons</item>
         <item>@string/icon_color_mode_system_custom_icons</item>
@@ -821,7 +838,7 @@
     </string-array>
 
     <!-- Icon type for lockscreen shorcut. -->
-    <string-array name="icon_types">
+    <string-array name="icon_types" translatable="false">
         <item>@string/icon_default</item>
         <item>@string/icon_presets</item>
         <item>@string/icon_custom</item>
@@ -938,7 +955,7 @@
     </string-array>
 
     <!-- Toast Animation -->
-    <string-array name="toast_animation_entries">
+    <string-array name="toast_animation_entries" translatable="false">
         <item>@string/toast_none_animation</item>
         <item>@string/toast_default_animation</item>
         <item>@string/toast_fade_animation</item>
@@ -957,7 +974,7 @@
         <item>@string/toast_SlideRightLeft_animation</item>
     </string-array>
 
-    <string-array name="toast_animation_values">
+    <string-array name="toast_animation_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -977,7 +994,7 @@
     </string-array>
 
     <!-- Listview animation -->
-    <string-array name="listview_animation_entries">
+    <string-array name="listview_animation_entries" translatable="false">
         <item>@string/listview_off</item>
         <item>@string/listview_wave_left</item>
         <item>@string/listview_wave_right</item>
@@ -991,7 +1008,7 @@
         <item>@string/listview_translate_right</item>
     </string-array>
 
-    <string-array name="listview_animation_values">
+    <string-array name="listview_animation_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -1006,7 +1023,7 @@
     </string-array>
 
     <!-- Listview Interpolator -->
-    <string-array name="listview_interpolator_entries">
+    <string-array name="listview_interpolator_entries" translatable="false">
         <item>@string/listview_off</item>
         <item>@string/listview_accelerate_interpolator</item>
         <item>@string/listview_decelerate_interpolator</item>
@@ -1017,7 +1034,7 @@
         <item>@string/listview_bounce_interpolator</item>
     </string-array>
 
-    <string-array name="listview_interpolator_values">
+    <string-array name="listview_interpolator_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -1029,7 +1046,7 @@
     </string-array>
 
     <!-- ProgressBar -->
-    <string-array name="progressbar_interpolators_entries">
+    <string-array name="progressbar_interpolators_entries" translatable="false">
         <item>@string/progressbar_none</item>
         <item>@string/progressbar_accelerate</item>
         <item>@string/progressbar_linear</item>
@@ -1037,7 +1054,7 @@
         <item>@string/progressbar_decelerate</item>
     </string-array>
 
-    <string-array name="progressbar_interpolators_values">
+    <string-array name="progressbar_interpolators_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -1085,7 +1102,7 @@
     </string-array>
 
     <!-- Lockscreen lock icon values -->
-    <string-array name="lock_icon_entries">
+    <string-array name="lock_icon_entries" translatable="false">
         <item>@string/lockscreen_lock_icon_custom</item>
         <item>@string/lockscreen_lock_icon_carbon</item>
         <item>@string/lockscreen_lock_icon_default</item>
