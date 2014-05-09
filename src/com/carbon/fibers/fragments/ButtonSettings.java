@@ -156,8 +156,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             res.getStringArray(res.getIdentifier(
                     "shortcut_action_hwkey_entries", "array", "com.android.settings")));
 
+	    
+        PreferenceScreen prefs = getPreferenceScreen();
+	final ContentResolver resolver = getActivity().getContentResolver();
+	    
          //Trackball wake
-         mTrackballWake = (CheckBoxPreference) prefScreen.findPreference(TRACKBALL_WAKE_TOGGLE);
+         mTrackballWake = (CheckBoxPreference) prefs.findPreference(TRACKBALL_WAKE_TOGGLE);
          mTrackballWake.setChecked(Settings.System.getInt(resolver, Settings.System.TRACKBALL_WAKE_SCREEN, 1) == 1);
  
         // Attach final settings screen.
