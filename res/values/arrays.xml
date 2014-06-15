@@ -268,12 +268,14 @@
         <item>@string/smart_pulldown_off</item>
         <item>@string/smart_pulldown_dismissable</item>
         <item>@string/smart_pulldown_persistent</item>
+        <item>@string/smart_pulldown_all</item>
     </string-array>
 
     <string-array name="smart_pulldown_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <!-- Status bar auto-collapse behaviour -->
@@ -299,20 +301,24 @@
         <item>@string/battery_status_icon</item>
         <item>@string/battery_status_percentage</item>
         <item>@string/battery_status_icon_percentage</item>
+        <item>@string/battery_status_icon_percentage_jb</item>
         <item>@string/battery_status_circle</item>
         <item>@string/battery_status_circle_percentage</item>
         <item>@string/battery_status_dotted_circle</item>
         <item>@string/battery_status_dotted_circle_percentage</item>
+        <item>@string/battery_status_gone</item>
     </string-array>
 
     <string-array name="values_battery_icon" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>7</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="circle_battery_animation_speed_entries" translatable="false">
@@ -618,6 +624,7 @@
         <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
+        <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_screenshot</item>
@@ -641,6 +648,7 @@
         <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
+        <item>**smart_pulldown**</item>
         <item>**recents**</item>
         <item>**power**</item>
         <item>**screenshot**</item>
@@ -747,6 +755,7 @@
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
+        <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib</item>
         <item>@string/shortcut_action_ring_vib_silent</item>
@@ -766,6 +775,7 @@
         <item>**ime**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
+        <item>**smart_pulldown**</item>
         <item>**ring_silent**</item>
         <item>**ring_vib**</item>
         <item>**ring_vib_silent**</item>
@@ -986,6 +996,22 @@
         <item>@*android:drawable/ic_shortcut_unlock</item>
     </string-array>
 
+   <string-array name="icon_color_mode_entries">
+        <item>@string/icon_color_mode_all_icons</item>
+        <item>@string/icon_color_mode_system_icons</item>
+        <item>@string/icon_color_mode_system_custom_icons</item>
+        <item>@string/disabled</item>
+    </string-array>
+
+    <string-array name="icon_color_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+
+
     <!-- Toast Animation -->
     <string-array name="toast_animation_entries" translatable="false">
         <item>@string/toast_none_animation</item>
@@ -1156,6 +1182,21 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+    </string-array>
+
+    <!-- Notification hide labels -->
+    <string-array name="notification_hide_labels_entries">
+        <item>@string/notification_hide_labels_disable</item>
+        <item>@string/notification_hide_labels_carrier</item>
+        <item>@string/notification_hide_labels_wifi</item>
+        <item>@string/notification_hide_labels_all</item>
+    </string-array>
+ 
+    <string-array name="notification_hide_labels_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
 </resources>
