@@ -130,9 +130,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mVolumeKeyCursorControl;
     private CheckBoxPreference mSwapVolumeButtons;
 
-
     private CheckBoxPreference mTrackballWake;
-
     private boolean mCheckPreferences;
     private Map<String, String> mKeySettings = new HashMap<String, String>();
 
@@ -155,17 +153,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     "shortcut_action_hwkey_values", "array", "com.android.settings")),
             res.getStringArray(res.getIdentifier(
                     "shortcut_action_hwkey_entries", "array", "com.android.settings")));
-
-	    
-        PreferenceScreen prefs = getPreferenceScreen();
-	final ContentResolver resolver = getActivity().getContentResolver();
-	    
-         //Trackball wake
-         mTrackballWake = (CheckBoxPreference) prefs.findPreference(TRACKBALL_WAKE_TOGGLE);
-         mTrackballWake.setChecked(Settings.System.getInt(resolver, Settings.System.TRACKBALL_WAKE_SCREEN, 1) == 1);
  
         // Attach final settings screen.
         reloadSettings();
+	
+	//Trackball wake
+         mTrackballWake = (CheckBoxPreference) getPreferenceScreen().findPreference(TRACKBALL_WAKE_TOGGLE);
+         mTrackballWake.setChecked(Settings.System.getInt(getActivity().getContentResolver(), Settings.System.TRACKBALL_WAKE_SCREEN, 1) == 1);
 
         setHasOptionsMenu(true);
     }
